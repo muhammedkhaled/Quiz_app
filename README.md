@@ -10,7 +10,9 @@ Fragmnets
 
 Pagination
 
-Firebase FireStor
+Firebase Fire stor database
+
+Firebase Storage
 
 Simple Animations for intro and Exist layouts
 
