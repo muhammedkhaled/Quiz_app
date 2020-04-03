@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.muhammadkhaled.quizapp.StartFragment"
+        android:label="fragment_splash_screan"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_splashScrean_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/startFragment"
+            app:enterAnim="@anim/fad_in"
+            app:exitAnim="@anim/fad_out"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.muhammadkhaled.quizapp.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.muhammadkhaled.quizapp.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_quizFragment"
+            app:destination="@id/quizFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/fad_out"
+            app:popEnterAnim="@anim/fad_in"
+            app:popExitAnim="@anim/slide_down"/>
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.muhammadkhaled.quizapp.QuizFragment"
+        android:label="fragment_quiz"
+        tools:layout="@layout/fragment_quiz" >
+        <action
+            android:id="@+id/action_quizFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/quizFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="quizid"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="total_questtions"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="quizName"
+            app:argType="string"
+            android:defaultValue="null" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.muhammadkhaled.quizapp.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <argument
+            android:name="quizId"
+            app:argType="string"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_resultFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popUpTo="@id/resultFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>
